@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "EDX",
+  "short_name": "EDX",
+  "description": "EDX ",
+  "version": "3.6",
+  "permissions": [
+    "storage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "https://*.engdis.com/*",
+    "https://api.groq.com/*"
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.engdis.com/*"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "js": [
+        "obfuscate.js",
+        "js/runtime/bridge.js",
+        "content.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "EDX",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content.css",
+        "inject.js",
+        "assets/klee/*.png"
+      ],
+      "matches": [
+        "https://*.engdis.com/*"
+      ]
+    }
+  ]
+}

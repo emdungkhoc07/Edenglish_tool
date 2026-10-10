@@ -1,0 +1,15 @@
+{
+  "name": "edx-extension",
+  "private": true,
+  "version": "3.6.0",
+  "description": "EDX Chrome extension build pipeline",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "check": "node --check content.js && node --check background.js && node --check inject.js && node --check js/runtime/bridge.js",
+    "backup": "node scripts/create-snapshot.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
